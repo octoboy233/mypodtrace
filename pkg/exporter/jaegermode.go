@@ -33,7 +33,7 @@ func NewJaegerResource(resourceName string) *resource.Resource {
 func NewJaegerExporter() (trace.SpanExporter, error) {
 	return jaeger.New(
 		//服务端起了一个all-in-one的jaeger容器，并展示webUI
-		jaeger.WithCollectorEndpoint(jaeger.WithEndpoint("http://218.0.59.2:14268/api/traces")),
+		jaeger.WithCollectorEndpoint(jaeger.WithEndpoint(config.SysConfig.Exporter.Jaeger.Endpoint)),
 	)
 }
 
